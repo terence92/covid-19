@@ -94,10 +94,12 @@ an_data.shape
 # **Age distribution of Confirmation**
 
 # %% [code]
+st.subheader('DISTRIBUZIONE ANNI COVID 19')
 plt.figure(figsize=(10,6))
 sns.set_style("darkgrid")
 plt.title("Age distribution of Confirmation")
 sns.kdeplot(data=an_data['age'], shade=True).set(xlim=(0))
+st.pyplot()
 
 # %% [markdown]
 # > **Age**
@@ -122,6 +124,6 @@ fig.update_layout(
     )   
     
 #py.iplot(fig)
-
+st.subheader('DISTRIBUZIONE DI GENERE - COVID 19')
 st.pyplot()
 
