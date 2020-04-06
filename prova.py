@@ -65,80 +65,63 @@ st.pyplot()
 
 # **Reading Data**
 
-# In[6]:
+# %% [code]
+data=pd.read_csv("../input/covid19-in-italy/covid19_italy_region.csv")
 
+# %% [code]
+an_data = pd.read_csv("../input/novel-corona-virus-2019-dataset/COVID19_open_line_list.csv")
 
-data=pd.read_csv("/Users/pasquale/Desktop/dati/covid19_italy_region.csv")
-data_with_time = pd.read_csv("/Users/pasquale/Desktop/dati/covid19-ita-regions.csv")
-data1= data_with_time
+# %% [code]
+comp = pd.read_excel('/kaggle/input/covid19327/COVID-19-3.27-top30-500.xlsx')
 
+# %% [code]
+province = pd.read_csv("../input/covid19-in-italy/covid19_italy_province.csv")
 
-# In[7]:
+dat = pd.read_csv("../input/covid19-in-italy/covid19_italy_province.csv")
 
-
-an_data = pd.read_csv("/Users/pasquale/Desktop/dati/COVID19_open_line_list.csv")
-
-
-# In[8]:
-
-
-comp = pd.read_excel('/Users/pasquale/Desktop/dati/COVID-19-3.27-top30-500.xlsx')
-
-
-# In[9]:
-
-
-province = pd.read_csv("/Users/pasquale/Desktop/dati/covid19_italy_province.csv")
-
-
-# In[10]:
-
-
-nRowsRead = 1000
-action=  pd.read_csv('/Users/pasquale/Desktop/dati/Dataset_Italy_COVID_19.csv'  , delimiter=';', encoding = "ISO-8859-1", nrows = nRowsRead)
-
-
+# %% [markdown]
 #  **Looking into data**
 
-# In[11]:
+# %% [code]
+an_data.head()
+
+# %% [code]
+an_data = an_data[an_data['country']=='Italy']
+an_data.shape
 
 
-action.head()
+# %% [markdown]
+# **Age distribution of Confirmation**
 
-
-# In[12]:
-
-
-action.shape
-
-
-# In[13]:
-
-
-action.dropna(how = 'all',inplace = True)
-
-
-# In[14]:
-
-
-plt.figure(figsize=(15, 5))
-plt.title('Acttions')
-action.Action.value_counts().plot.bar();
-
-
-# In[15]:
-
-
-from wordcloud import WordCloud, ImageColorGenerator
-text = " ".join(str(each) for each in action.Action)
-wordcloud = WordCloud(max_words=200,colormap='Set3', background_color="white").generate(text)
+# %% [code]
 plt.figure(figsize=(10,6))
-plt.figure(figsize=(15,10))
-plt.imshow(wordcloud, interpolation='Bilinear')
-plt.axis("off")
-plt.figure(1,figsize=(12, 12))
+sns.set_style("darkgrid")
+plt.title("Age distribution of Confirmation")
+sns.kdeplot(data=an_data['age'], shade=True).set(xlim=(0))
+
+# %% [markdown]
+# > **Age**
+# 
+# **Here, the graph shows the age distribution of the infected people by gender. We can clearly see older people are more likely to be infected, especially older people with having lung disease and problems in their respiratory system. The age group of 40 to 50yr are more infected than the rest of the population in men. On the other hand age groups of 50yr to 70yr are more infected in womens. As Dr.Steven Gambert, professor of medicine and director of geriatrics at the University of Maryland School of Medicine says “ Older people have higher risk of underlying health conditions, older people are already under physical stress, and their immune systems, even if not significantly compromised, simply do not have the same “ability to fight viruses and bacteria”. As data says Italy has the oldest population across globe by count. According to EU statistics Italy has the lowest percentage of young people**.
+
+# %% [markdown]
+# **Gender Distribution of Confirmatioin**
+
+# %% [code]
+plt.figure(figsize=(15, 5))
+plt.title('Gender')
+an_data.sex.value_counts().plot.bar();
+
+# %% [code]
+fig = px.pie( values=an_data.groupby(['sex']).size().values,names=an_data.groupby(['sex']).size().index)
+fig.update_layout(
+    font=dict(
+        size=15,
+        color="#242323"
+    )
+    )   
+    
+#py.iplot(fig)
 
 st.pyplot()
-
-
 
