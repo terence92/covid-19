@@ -13,4 +13,4 @@ scikit-image==0.16.2
 scikit-learn==0.22.1
 holidays==0.9.12
 wordcloud==1.6.0
-xlrd ==1.2.0
+xlrd==1.2.0
