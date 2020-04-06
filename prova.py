@@ -66,18 +66,18 @@ st.pyplot()
 # **Reading Data**
 
 # %% [code]
-data=pd.read_csv("../input/covid19-in-italy/covid19_italy_region.csv")
+data=pd.read_csv("https://raw.githubusercontent.com/terence92/covid-19/master/covid19-ita-regions.csv")
 
 # %% [code]
-an_data = pd.read_csv("../input/novel-corona-virus-2019-dataset/COVID19_open_line_list.csv")
+an_data = pd.read_csv("https://raw.githubusercontent.com/terence92/covid-19/master/COVID19_open_line_list.csv")
 
 # %% [code]
-comp = pd.read_excel('/kaggle/input/covid19327/COVID-19-3.27-top30-500.xlsx')
+comp = pd.read_excel('https://github.com/terence92/covid-19/blob/master/COVID-19-3.27-top30-500.xlsx?raw=true')
 
 # %% [code]
-province = pd.read_csv("../input/covid19-in-italy/covid19_italy_province.csv")
+province = pd.read_csv("https://raw.githubusercontent.com/terence92/covid-19/master/covid19_italy_province.csv")
 
-dat = pd.read_csv("../input/covid19-in-italy/covid19_italy_province.csv")
+dat = pd.read_csv("https://raw.githubusercontent.com/terence92/covid-19/master/covid19_italy_province.csv")
 
 # %% [markdown]
 #  **Looking into data**
