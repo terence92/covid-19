@@ -218,7 +218,7 @@ st.pyplot()
 # **Affected place in world map including Hospitalised , Confirm , Deaths and Recovery**
 
 # %% [code]
- import folium
+import folium
 italy_map = folium.Map(location=[42.8719,12.5674 ], zoom_start=5,tiles='Stamen Toner')
 
 for lat, lon,RegionName,TotalPositiveCases,Recovered,Deaths,TotalHospitalizedPatients in zip(data['Latitude'], data['Longitude'],data['RegionName'],data['TotalPositiveCases'],data['Recovered'],data['Deaths'],data['TotalHospitalizedPatients']):
