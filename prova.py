@@ -115,6 +115,47 @@ fig.update_layout(
 st.pyplot()
 
 
+data.head()
 
+# %% [markdown]
+# **Checking for Null Value**
 
+# %% [code]
+data.isna().sum()
 
+# %% [markdown]
+# **Description of Data**
+
+# %% [code]
+data.describe().T
+
+# %% [markdown]
+# **Tracking the Patient**
+
+# %% [code]
+data.shape
+
+data['Date'] = pd.to_datetime(data['Date']).dt.normalize()
+daily = data.sort_values(['Date','Country','RegionName'])
+latest = data[data.Date == daily.Date.max()]
+latest.head()
+
+data_groupby_region = latest.groupby("RegionName")[['TotalPositiveCases', 'Deaths', 'Recovered','TestsPerformed','HospitalizedPatients','TotalHospitalizedPatients']].sum().reset_index()
+dgr = data_groupby_region 
+dgr.head()
+
+# %% [markdown]
+# **Desciption of Grouped Data by Region**
+
+# %% [code]
+dgr.describe().T
+
+# %% [markdown]
+# **Test performed vs Region**
+
+# %% [code]
+fig = px.bar(dgr[['RegionName', 'TestsPerformed']].sort_values('TestsPerformed', ascending=False), 
+             y="TestsPerformed", x="RegionName", color='RegionName', 
+             log_y=True, template='ggplot2', title='Test Performed vs Region')
+
+st.pyplot()
