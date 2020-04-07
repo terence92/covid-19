@@ -152,10 +152,24 @@ dgr.describe().T
 
 # %% [markdown]
 # **Test performed vs Region**
-
+st.subheader('tamponi REGIONE')
 # %% [code]
 fig = px.bar(dgr[['RegionName', 'TestsPerformed']].sort_values('TestsPerformed', ascending=False), 
              y="TestsPerformed", x="RegionName", color='RegionName', 
              log_y=True, template='ggplot2', title='Test Performed vs Region')
 
+st.pyplot()
+
+# %% [markdown]
+# **As the graph shows the test performed in different regions of Italy. Lombardia has the maximum number(25k+) of tests performed as it is the most infected in cities. As a result the next graph shows that it has the maximum number(7280) of positive coronavirus patients. Veneto is the second most infected city here followed by some more countries like Emilia Romagna, Lazio, Marche, Toscana, Piemonte, Friuli V.G. ,Campania, Sicilia, Liguria, Puglia, P.A. Trento, Calabria, Umbria, Abruzzo, Sardegna, Molisa, Basilicata, Valle d'Aosta, P.A. Bolzano etc.
+# **
+
+# %% [markdown]
+# **Confirmed Cases vs Region**
+st.subheader('CASI CONFERMATI - REGIONE')
+# %% [code]
+fig = px.bar(dgr[['RegionName', 'TotalPositiveCases']].sort_values('TotalPositiveCases', ascending=False), 
+             y="TotalPositiveCases", x="RegionName", color='RegionName', 
+             log_y=True, template='ggplot2', title='Confirmed Cases vs Region')
+fig.show()
 st.pyplot()
